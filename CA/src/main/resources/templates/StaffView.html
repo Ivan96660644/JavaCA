@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Staff Leave Information</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/caps.css}" />
+</head>
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+	<div th:replace="fragments/general.html :: menubar"></div>
+
+	<table class="Buttontbl">
+        <tr>
+            <th class="btndiv"><a th:href="@{/staff/list}" class="actionbtn">View Staff</a></th>
+        </tr>
+        <tr>
+            <th class="btndiv"><a th:href="@{/leave/info/}+${staff.id}" class="actionbtn">view your information</a></th>
+        </tr>
+        <tr>
+            <th class="btndiv"><a th:href="@{/Leave/list}" class="actionbtn">Manage Courses</a></th>
+        </tr>
+        
+    </table>
+    
+     <div class="staffLeavebody">
+     <h2 class="space"> Welcome <span th:text="${staff.firstName}">Scrum</span>!</h2>
+            <h2 class="space">Staff Leave</h2>
+        
+            <h2 class="space">Past Leave</h2>
+            <table class="Stafftbl space">
+                <tr>
+                   
+                    <th class="leavelist">Leave Id</th>
+                    <th class="leavelist">leave State</th>
+                    <th class="leavelist">Leave Reason</th>
+                    <th class="leavelist">Leave Command</th>
+                </tr>
+                <tr th:each="leave:${staffinfo.leave}">
+                    <td class="leavelist" th:text=${leave.id}>Leave Id</td>
+                    <td class="leavelist" th:text=${leave.state}>leave State</td>
+                    <td class="leavelist" th:text=${leave.reason}>leave Reason</td>
+                    <td class="leavelist" th:text=${leave.command}>Leave Command</td>
+                </tr>
+            </table>
+            
+           
+</body>
+</html>
